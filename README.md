@@ -38,5 +38,5 @@ Top V nodes: <br />
    4) Dopo che gli indici sono stati esauriti i thread ausiliari si mettono in coda per incrementare l'errore al passo corrente e il contributo dei nodi dead-end per il T+1. Poi segnalano la fine del lavoro al tempo T con un semaforo posix (sem_end);
    5) Il controllo passa al thread principale che verifica la convergenza e comunica se continuare il calcolo (ripartire dal punto 2.2) o terminare;
 
-*Funzionamento del BATCH*
+*Funzionamento del BATCH* <br />
 I thread lavorano su piccoli intervalli, cercando un compromesso tra "lentessa se acquisissero un indice per volta" e "dividere gli indici staticamente vuol dire non parallelizzare".
