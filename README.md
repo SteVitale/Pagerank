@@ -41,7 +41,7 @@ Top V nodes: <br />
 *Funzionamento del BATCH* <br />
 I thread lavorano su piccoli intervalli, cercando un compromesso tra "lentessa se acquisissero un indice per volta" e "dividere gli indici staticamente vuol dire non parallelizzare".
 
-## TEST ## <br />
+## TEST ## 
 make <br />
 valgrind ./pagerank -e 1e-9 -k5 9nodi.mtx 1> 9nodi.rk 2> 9nodi.log <br />
 diff -bB 9nodi.rk 9nodi.sol <br />
