@@ -65,6 +65,16 @@ int xsem_wait(sem_t *sem, int linea, char *file) {
 }
 
 // threads: creazione e join
+#define Buflen 100
+void xperror(int en, char *msg) {
+  char buf[Buflen];
+  
+  char *errmsg = strerror_r(en, buf, Buflen);
+  if(msg!=NULL)
+    fprintf(stderr,"%s: %s\n",msg, errmsg);
+  else
+    fprintf(stderr,"%s\n",errmsg);
+}
 
 int xpthread_create(pthread_t *thread, const pthread_attr_t *attr,
                           void *(*start_routine) (void *), void *arg, int linea, char *file) {
