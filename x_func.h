@@ -29,6 +29,7 @@ int xsem_post(sem_t *sem, int linea, char *file);
 int xsem_wait(sem_t *sem, int linea, char *file);
 
 // thread
+void xperror(int en, char *msg);
 int xpthread_create(pthread_t *thread, const pthread_attr_t *attr,
                           void *(*start_routine) (void *), void *arg, int linea, char *file);
 int xpthread_join(pthread_t thread, void **retval, int linea, char *file);
