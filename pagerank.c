@@ -10,7 +10,7 @@
 
 /*  OPZIONI DEFAULT */
 #define K 3 //Nodi Stampati
-#define M 100 //Massimo numero iterazoini
+#define M 100 //Massimo numero iterazioni
 #define D 0.9 //Damping factor
 #define E 1.0e-7 //Errore massimo
 #define T 3 //Numero Thread ausiliari
