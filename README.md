@@ -41,7 +41,12 @@ Top V nodes: <br />
 *Funzionamento del BATCH* <br />
 I thread lavorano su piccoli intervalli, cercando un compromesso tra "lentessa se acquisissero un indice per volta" e "dividere gli indici staticamente vuol dire non parallelizzare".
 
+## GESTIONE DEI SEGNALI ##
+Nel programma è prevista l'interazione mediante il segnale SIGUSR1, in particolare, ogni volta che il thread incaricato di gestire i segnali riceve questo segnale stamperà su stdout il rank massimo dell'iterazione corrente (del calcolo del pagerank).
+
 ## TEST ## 
 make <br />
 valgrind ./pagerank -e 1e-9 -k5 9nodi.mtx 1> 9nodi.rk 2> 9nodi.log <br />
 diff -bB 9nodi.rk 9nodi.sol <br />
+
+In un altro terminale lanciare il comando "pkill -SIGUSR1 pagerank".
