@@ -1,4 +1,4 @@
-### Pagerank + PThread ###
+## Pagerank + PThread ##
 Implementazione in C dell'algoritmo "Pagerank", parallelizzato con thread POSIX.
 
 ## INPUT ##
