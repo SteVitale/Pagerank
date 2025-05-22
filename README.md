@@ -39,7 +39,7 @@ Top V nodes: <br />
    5) Il controllo passa al thread principale che verifica la convergenza e comunica se continuare il calcolo (ripartire dal punto 2.2) o terminare;
 
 *Funzionamento del BATCH* <br />
-I thread lavorano su piccoli intervalli, cercando un compromesso tra "lentessa se acquisissero un indice per volta" e "dividere gli indici staticamente vuol dire non parallelizzare".
+I thread lavorano su piccoli intervalli, cercando un compromesso tra "lentezza se acquisissero un indice per volta" e "dividere gli indici staticamente vuol dire non parallelizzare".
 
 ## GESTIONE DEI SEGNALI ##
 Nel programma è prevista l'interazione mediante il segnale SIGUSR1, in particolare, ogni volta che il thread incaricato di gestire i segnali riceve questo segnale stamperà su stdout il rank massimo dell'iterazione corrente (del calcolo del pagerank).
