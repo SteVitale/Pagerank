@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/pagerank.dir/app/main.cpp.o -o pagerank  libpr_core.a 

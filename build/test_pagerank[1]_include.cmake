@@ -1,0 +1,5 @@
+if(EXISTS "/home/stefano/workspace/Pagerank/build/test_pagerank[1]_tests.cmake")
+  include("/home/stefano/workspace/Pagerank/build/test_pagerank[1]_tests.cmake")
+else()
+  add_test(test_pagerank_NOT_BUILT test_pagerank_NOT_BUILT)
+endif()

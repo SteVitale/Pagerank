@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/test_pagerank.dir/tests/test_pagerank.cpp.o -o test_pagerank  libpr_core.a lib/libgtest_main.a lib/libgtest.a 

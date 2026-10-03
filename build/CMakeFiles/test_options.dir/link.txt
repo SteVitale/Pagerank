@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/test_options.dir/tests/test_options.cpp.o -o test_options  libpr_core.a lib/libgtest_main.a lib/libgtest.a 

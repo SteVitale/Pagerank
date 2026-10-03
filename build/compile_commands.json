@@ -1,0 +1,86 @@
+[
+{
+  "directory": "/home/stefano/workspace/Pagerank/build",
+  "command": "/usr/bin/c++  -I/home/stefano/workspace/Pagerank/include -g -std=c++23 -Wall -Wextra -Wpedantic -Wconversion -Wshadow -o CMakeFiles/pr_core.dir/src/graph.cpp.o -c /home/stefano/workspace/Pagerank/src/graph.cpp",
+  "file": "/home/stefano/workspace/Pagerank/src/graph.cpp",
+  "output": "CMakeFiles/pr_core.dir/src/graph.cpp.o"
+},
+{
+  "directory": "/home/stefano/workspace/Pagerank/build",
+  "command": "/usr/bin/c++  -I/home/stefano/workspace/Pagerank/include -g -std=c++23 -Wall -Wextra -Wpedantic -Wconversion -Wshadow -o CMakeFiles/pr_core.dir/src/mtx_parser.cpp.o -c /home/stefano/workspace/Pagerank/src/mtx_parser.cpp",
+  "file": "/home/stefano/workspace/Pagerank/src/mtx_parser.cpp",
+  "output": "CMakeFiles/pr_core.dir/src/mtx_parser.cpp.o"
+},
+{
+  "directory": "/home/stefano/workspace/Pagerank/build",
+  "command": "/usr/bin/c++  -I/home/stefano/workspace/Pagerank/include -g -std=c++23 -Wall -Wextra -Wpedantic -Wconversion -Wshadow -o CMakeFiles/pr_core.dir/src/options.cpp.o -c /home/stefano/workspace/Pagerank/src/options.cpp",
+  "file": "/home/stefano/workspace/Pagerank/src/options.cpp",
+  "output": "CMakeFiles/pr_core.dir/src/options.cpp.o"
+},
+{
+  "directory": "/home/stefano/workspace/Pagerank/build",
+  "command": "/usr/bin/c++  -I/home/stefano/workspace/Pagerank/include -g -std=c++23 -Wall -Wextra -Wpedantic -Wconversion -Wshadow -o CMakeFiles/pr_core.dir/src/pagerank.cpp.o -c /home/stefano/workspace/Pagerank/src/pagerank.cpp",
+  "file": "/home/stefano/workspace/Pagerank/src/pagerank.cpp",
+  "output": "CMakeFiles/pr_core.dir/src/pagerank.cpp.o"
+},
+{
+  "directory": "/home/stefano/workspace/Pagerank/build",
+  "command": "/usr/bin/c++  -I/home/stefano/workspace/Pagerank/include -g -std=c++23 -Wall -Wextra -Wpedantic -Wconversion -Wshadow -o CMakeFiles/pr_core.dir/src/report.cpp.o -c /home/stefano/workspace/Pagerank/src/report.cpp",
+  "file": "/home/stefano/workspace/Pagerank/src/report.cpp",
+  "output": "CMakeFiles/pr_core.dir/src/report.cpp.o"
+},
+{
+  "directory": "/home/stefano/workspace/Pagerank/build",
+  "command": "/usr/bin/c++  -I/home/stefano/workspace/Pagerank/include -g -std=c++23 -o CMakeFiles/pagerank.dir/app/main.cpp.o -c /home/stefano/workspace/Pagerank/app/main.cpp",
+  "file": "/home/stefano/workspace/Pagerank/app/main.cpp",
+  "output": "CMakeFiles/pagerank.dir/app/main.cpp.o"
+},
+{
+  "directory": "/home/stefano/workspace/Pagerank/build",
+  "command": "/usr/bin/c++ -DPR_TEST_DATA_DIR=\\\"/home/stefano/workspace/Pagerank/tests/data\\\" -I/home/stefano/workspace/Pagerank/include -isystem /home/stefano/workspace/Pagerank/build/_deps/googletest-src/googletest/include -isystem /home/stefano/workspace/Pagerank/build/_deps/googletest-src/googletest -g -std=c++23 -o CMakeFiles/test_options.dir/tests/test_options.cpp.o -c /home/stefano/workspace/Pagerank/tests/test_options.cpp",
+  "file": "/home/stefano/workspace/Pagerank/tests/test_options.cpp",
+  "output": "CMakeFiles/test_options.dir/tests/test_options.cpp.o"
+},
+{
+  "directory": "/home/stefano/workspace/Pagerank/build",
+  "command": "/usr/bin/c++ -DPR_TEST_DATA_DIR=\\\"/home/stefano/workspace/Pagerank/tests/data\\\" -I/home/stefano/workspace/Pagerank/include -isystem /home/stefano/workspace/Pagerank/build/_deps/googletest-src/googletest/include -isystem /home/stefano/workspace/Pagerank/build/_deps/googletest-src/googletest -g -std=c++23 -o CMakeFiles/test_parser.dir/tests/test_parser.cpp.o -c /home/stefano/workspace/Pagerank/tests/test_parser.cpp",
+  "file": "/home/stefano/workspace/Pagerank/tests/test_parser.cpp",
+  "output": "CMakeFiles/test_parser.dir/tests/test_parser.cpp.o"
+},
+{
+  "directory": "/home/stefano/workspace/Pagerank/build",
+  "command": "/usr/bin/c++ -DPR_TEST_DATA_DIR=\\\"/home/stefano/workspace/Pagerank/tests/data\\\" -I/home/stefano/workspace/Pagerank/include -isystem /home/stefano/workspace/Pagerank/build/_deps/googletest-src/googletest/include -isystem /home/stefano/workspace/Pagerank/build/_deps/googletest-src/googletest -g -std=c++23 -o CMakeFiles/test_graph.dir/tests/test_graph.cpp.o -c /home/stefano/workspace/Pagerank/tests/test_graph.cpp",
+  "file": "/home/stefano/workspace/Pagerank/tests/test_graph.cpp",
+  "output": "CMakeFiles/test_graph.dir/tests/test_graph.cpp.o"
+},
+{
+  "directory": "/home/stefano/workspace/Pagerank/build",
+  "command": "/usr/bin/c++ -DPR_TEST_DATA_DIR=\\\"/home/stefano/workspace/Pagerank/tests/data\\\" -I/home/stefano/workspace/Pagerank/include -isystem /home/stefano/workspace/Pagerank/build/_deps/googletest-src/googletest/include -isystem /home/stefano/workspace/Pagerank/build/_deps/googletest-src/googletest -g -std=c++23 -o CMakeFiles/test_pagerank.dir/tests/test_pagerank.cpp.o -c /home/stefano/workspace/Pagerank/tests/test_pagerank.cpp",
+  "file": "/home/stefano/workspace/Pagerank/tests/test_pagerank.cpp",
+  "output": "CMakeFiles/test_pagerank.dir/tests/test_pagerank.cpp.o"
+},
+{
+  "directory": "/home/stefano/workspace/Pagerank/build/_deps/googletest-build/googlemock",
+  "command": "/usr/bin/c++  -I/home/stefano/workspace/Pagerank/build/_deps/googletest-src/googlemock/include -I/home/stefano/workspace/Pagerank/build/_deps/googletest-src/googlemock -isystem /home/stefano/workspace/Pagerank/build/_deps/googletest-src/googletest/include -isystem /home/stefano/workspace/Pagerank/build/_deps/googletest-src/googletest -g -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o CMakeFiles/gmock.dir/src/gmock-all.cc.o -c /home/stefano/workspace/Pagerank/build/_deps/googletest-src/googlemock/src/gmock-all.cc",
+  "file": "/home/stefano/workspace/Pagerank/build/_deps/googletest-src/googlemock/src/gmock-all.cc",
+  "output": "_deps/googletest-build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o"
+},
+{
+  "directory": "/home/stefano/workspace/Pagerank/build/_deps/googletest-build/googlemock",
+  "command": "/usr/bin/c++  -isystem /home/stefano/workspace/Pagerank/build/_deps/googletest-src/googlemock/include -isystem /home/stefano/workspace/Pagerank/build/_deps/googletest-src/googlemock -isystem /home/stefano/workspace/Pagerank/build/_deps/googletest-src/googletest/include -isystem /home/stefano/workspace/Pagerank/build/_deps/googletest-src/googletest -g -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o CMakeFiles/gmock_main.dir/src/gmock_main.cc.o -c /home/stefano/workspace/Pagerank/build/_deps/googletest-src/googlemock/src/gmock_main.cc",
+  "file": "/home/stefano/workspace/Pagerank/build/_deps/googletest-src/googlemock/src/gmock_main.cc",
+  "output": "_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o"
+},
+{
+  "directory": "/home/stefano/workspace/Pagerank/build/_deps/googletest-build/googletest",
+  "command": "/usr/bin/c++  -I/home/stefano/workspace/Pagerank/build/_deps/googletest-src/googletest/include -I/home/stefano/workspace/Pagerank/build/_deps/googletest-src/googletest -g -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o CMakeFiles/gtest.dir/src/gtest-all.cc.o -c /home/stefano/workspace/Pagerank/build/_deps/googletest-src/googletest/src/gtest-all.cc",
+  "file": "/home/stefano/workspace/Pagerank/build/_deps/googletest-src/googletest/src/gtest-all.cc",
+  "output": "_deps/googletest-build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o"
+},
+{
+  "directory": "/home/stefano/workspace/Pagerank/build/_deps/googletest-build/googletest",
+  "command": "/usr/bin/c++  -isystem /home/stefano/workspace/Pagerank/build/_deps/googletest-src/googletest/include -isystem /home/stefano/workspace/Pagerank/build/_deps/googletest-src/googletest -g -std=c++23 -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers -o CMakeFiles/gtest_main.dir/src/gtest_main.cc.o -c /home/stefano/workspace/Pagerank/build/_deps/googletest-src/googletest/src/gtest_main.cc",
+  "file": "/home/stefano/workspace/Pagerank/build/_deps/googletest-src/googletest/src/gtest_main.cc",
+  "output": "_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o"
+}
+]
