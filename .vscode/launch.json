@@ -1,0 +1,140 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "pagerank: defaults (9nodi)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${command:cmake.launchTargetPath}",
+      "args": ["${workspaceFolder}/tests/data/9nodi.mtx"],
+      "cwd": "${workspaceFolder}",
+      "MIMode": "gdb",
+      "preLaunchTask": "CMake: build"
+    },
+    {
+      "name": "pagerank: oracle 9nodi (-e 1e-9 -k 5)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${command:cmake.launchTargetPath}",
+      "args": ["-e", "1e-9", "-k", "5", "${workspaceFolder}/tests/data/9nodi.mtx"],
+      "cwd": "${workspaceFolder}",
+      "MIMode": "gdb",
+      "preLaunchTask": "CMake: build"
+    },
+    {
+      "name": "pagerank: damping 0.85, top 10",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${command:cmake.launchTargetPath}",
+      "args": ["-d", "0.85", "-k", "10", "${workspaceFolder}/tests/data/9nodi.mtx"],
+      "cwd": "${workspaceFolder}",
+      "MIMode": "gdb",
+      "preLaunchTask": "CMake: build"
+    },
+    {
+      "name": "pagerank: loose eps (few iterations)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${command:cmake.launchTargetPath}",
+      "args": ["-e", "1e-3", "${workspaceFolder}/tests/data/9nodi.mtx"],
+      "cwd": "${workspaceFolder}",
+      "MIMode": "gdb",
+      "preLaunchTask": "CMake: build"
+    },
+    {
+      "name": "pagerank: maxiter 1 (must not converge)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${command:cmake.launchTargetPath}",
+      "args": ["-m", "1", "${workspaceFolder}/tests/data/9nodi.mtx"],
+      "cwd": "${workspaceFolder}",
+      "MIMode": "gdb",
+      "preLaunchTask": "CMake: build"
+    },
+    {
+      "name": "pagerank: pick damping (prompt)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${command:cmake.launchTargetPath}",
+      "args": ["-d", "${input:damping}", "${workspaceFolder}/tests/data/9nodi.mtx"],
+      "cwd": "${workspaceFolder}",
+      "MIMode": "gdb",
+      "preLaunchTask": "CMake: build"
+    },
+    {
+      "name": "pagerank: --help (-h)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${command:cmake.launchTargetPath}",
+      "args": ["-h"],
+      "cwd": "${workspaceFolder}",
+      "MIMode": "gdb",
+      "preLaunchTask": "CMake: build"
+    },
+    {
+      "name": "pagerank: ERROR damping = 1",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${command:cmake.launchTargetPath}",
+      "args": ["-d", "1", "${workspaceFolder}/tests/data/9nodi.mtx"],
+      "cwd": "${workspaceFolder}",
+      "MIMode": "gdb",
+      "preLaunchTask": "CMake: build"
+    },
+    {
+      "name": "pagerank: ERROR top = 5x",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${command:cmake.launchTargetPath}",
+      "args": ["-k", "5x", "${workspaceFolder}/tests/data/9nodi.mtx"],
+      "cwd": "${workspaceFolder}",
+      "MIMode": "gdb",
+      "preLaunchTask": "CMake: build"
+    },
+    {
+      "name": "pagerank: ERROR no input file",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${command:cmake.launchTargetPath}",
+      "args": ["-k", "3"],
+      "cwd": "${workspaceFolder}",
+      "MIMode": "gdb",
+      "preLaunchTask": "CMake: build"
+    },
+    {
+      "name": "test_options (all)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/tests/test_options",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "MIMode": "gdb",
+      "preLaunchTask": "CMake: build"
+    },
+    {
+      "name": "test_options (filter: ask)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/tests/test_options",
+      "args": ["--gtest_filter=${input:gtestFilter}"],
+      "cwd": "${workspaceFolder}",
+      "MIMode": "gdb",
+      "preLaunchTask": "CMake: build"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "damping",
+      "type": "pickString",
+      "description": "Damping factor",
+      "options": ["0.5", "0.85", "0.9", "0.99"],
+      "default": "0.85"
+    },
+    {
+      "id": "gtestFilter",
+      "type": "promptString",
+      "description": "GoogleTest filter (e.g. Options.*, InvalidArgs*)",
+      "default": "Options.*"
+    }
+  ]
+}
