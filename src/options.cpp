@@ -1,63 +1,103 @@
-// src/options.cpp  (minimal version, POSIX getopt)
+// src/options.cpp
+
 #include <pr/options.hpp>
 
 #include <charconv>
 #include <cmath>
-#include <cstring>
 #include <format>
 #include <unistd.h>
 
 namespace pr {
+
 namespace {
 
-// Whole string must be a valid, finite number ("5x", "", "nan", overflow -> false).
-template <typename T>
-bool parse(const char* s, T& out) {
-    const char* end = s + std::strlen(s);
-    const auto [ptr, ec] = std::from_chars(s, end, out);
-    return ec == std::errc{} && ptr == end && std::isfinite(out);
+bool parse_double(const char* s, double& value) {
+    const char* end = s + std::char_traits<char>::length(s);
+    const auto [ptr, ec] = std::from_chars(s, end, value);
+
+    return ec == std::errc{} && ptr == end && std::isfinite(value);
 }
 
-}  // namespace
+bool parse_int(const char* s, std::int32_t& value) {
+    const char* end = s + std::char_traits<char>::length(s);
+    const auto [ptr, ec] = std::from_chars(s, end, value);
+
+    return ec == std::errc{} && ptr == end;
+}
+
+} // namespace
 
 std::expected<Options, std::string> parse_args(int argc, char* argv[]) {
-    Options o;
-    opterr = 0;  // getopt must not print its own messages
-    optind = 1;  // reset global state (needed when called more than once, e.g. tests)
+    Options options;
+
+    opterr = 0;
+    optind = 1;
 
     int c;
     while ((c = getopt(argc, argv, "d:e:m:k:t:h")) != -1) {
-        bool ok = true;
+
         switch (c) {
-        case 'd': ok = parse(optarg, o.damping) && o.damping > 0 && o.damping < 1; break;
-        case 'e': ok = parse(optarg, o.eps) && o.eps > 0; break;
-        case 'm': ok = parse(optarg, o.max_iter) && o.max_iter >= 1; break;
-        case 'k': ok = parse(optarg, o.top) && o.top >= 1; break;
-        case 't': ok = parse(optarg, o.threads) && o.threads >= 1; break;
-        case 'h': o.show_help = true; return o;
+        case 'd':
+            if (!parse_double(optarg, options.damping) ||
+                options.damping <= 0 || options.damping >= 1) {
+                return std::unexpected("invalid value for -d");
+            }
+            break;
+
+        case 'e':
+            if (!parse_double(optarg, options.eps) ||
+                options.eps <= 0) {
+                return std::unexpected("invalid value for -e");
+            }
+            break;
+
+        case 'm':
+            if (!parse_int(optarg, options.max_iter) ||
+                options.max_iter < 1) {
+                return std::unexpected("invalid value for -m");
+            }
+            break;
+
+        case 'k':
+            if (!parse_int(optarg, options.top) ||
+                options.top < 1) {
+                return std::unexpected("invalid value for -k");
+            }
+            break;
+
+        case 't':
+            if (!parse_int(optarg, options.threads) ||
+                options.threads < 1) {
+                return std::unexpected("invalid value for -t");
+            }
+            break;
+
+        case 'h':
+            options.show_help = true;
+            return options;
+
         default:
-            return std::unexpected(
-                std::format("unknown option or missing value: -{}", static_cast<char>(optopt)));
-        }
-        if (!ok) {
-            return std::unexpected(
-                std::format("invalid value '{}' for -{}", optarg, static_cast<char>(c)));
+            return std::unexpected("unknown option or missing value");
         }
     }
 
     if (optind >= argc) {
         return std::unexpected("missing input file");
     }
+
     if (optind + 1 < argc) {
-        return std::unexpected("too many arguments: expected a single input file");
+        return std::unexpected("too many arguments");
     }
-    o.input = argv[optind];
-    return o;
+
+    options.input = argv[optind];
+    return options;
 }
 
-std::string usage(std::string_view prog) {
-    return std::format("Usage: {} [-d damping] [-e eps] [-m maxiter] [-k top] [-t threads] <graph.mtx>\n",
-                       prog);
+std::string usage(std::string_view program_name) {
+    return std::format(
+        "Usage: {} [-d damping] [-e eps] [-m maxiter] "
+        "[-k top] [-t threads] <graph.mtx>\n",
+        program_name);
 }
 
-}  // namespace pr
+} // namespace pr
