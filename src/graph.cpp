@@ -1,9 +1,7 @@
-// src/graph.cpp
 #include <pr/graph.hpp>
 
 #include <algorithm>
-#include <cassert>
-#include <numeric>
+#include <cstdint>
 
 namespace pr {
 
@@ -11,35 +9,75 @@ Graph Graph::from_edges(const EdgeList& el) {
     Graph g;
     g.n_ = el.n_nodes;
 
-    // Pack each arc as (dst << 32 | src): sorting plain integers groups the
-    // arcs by destination, sorted by source inside each group.
-    std::vector<std::uint64_t> keys;
-    keys.reserve(el.edges.size());
-    for (const Edge& e : el.edges) {
-        assert(e.src < g.n_ && e.dst < g.n_);
-        if (e.src != e.dst) {  // drop self-loops
-            keys.push_back((std::uint64_t{e.dst} << 32) | e.src);
+    std::vector<Edge> edges;
+    edges.reserve(el.edges.size());
+
+    // Remove self-loops.
+    for (const Edge edge : el.edges) {
+        if (edge.src == edge.dst) {
+            ++g.invalid_;
+            continue;
+        }
+
+        edges.push_back(edge);
+    }
+
+    // Sort by destination, then source.
+    std::sort(edges.begin(), edges.end(),
+        [](const Edge& a, const Edge& b) {
+            if (a.dst != b.dst) {
+                return a.dst < b.dst;
+            }
+            return a.src < b.src;
+        });
+
+    // Remove duplicate arcs.
+    const auto last = std::unique(edges.begin(), edges.end(),
+        [](const Edge& a, const Edge& b) {
+            return a.src == b.src && a.dst == b.dst;
+        });
+
+    g.invalid_ +=
+        static_cast<std::uint64_t>(edges.end() - last);
+
+    edges.erase(last, edges.end());
+
+    // Build CSR offsets.
+    g.offsets_.assign(
+        static_cast<std::size_t>(g.n_) + 1, 0);
+
+    for (const Edge edge : edges) {
+        ++g.offsets_[static_cast<std::size_t>(edge.dst) + 1];
+    }
+
+    for (NodeId i = 0; i < g.n_; ++i) {
+        g.offsets_[i + 1] += g.offsets_[i];
+    }
+
+    // Store sources in CSR order.
+    g.sources_.reserve(edges.size());
+
+    for (const Edge edge : edges) {
+        g.sources_.push_back(edge.src);
+    }
+
+    // Compute out-degrees.
+    g.out_deg_.assign(g.n_, 0);
+
+    for (const Edge edge : edges) {
+        ++g.out_deg_[edge.src];
+    }
+
+    // Count dead-end nodes.
+    g.dead_ends_ = 0;
+
+    for (NodeId i = 0; i < g.n_; ++i) {
+        if (g.out_deg_[i] == 0) {
+            ++g.dead_ends_;
         }
     }
-    std::sort(keys.begin(), keys.end());
-    keys.erase(std::unique(keys.begin(), keys.end()), keys.end());  // drop duplicates
 
-    g.invalid_ = el.edges.size() - keys.size();
-
-    g.offsets_.assign(std::size_t{g.n_} + 1, 0);
-    g.out_deg_.assign(g.n_, 0);
-    g.sources_.reserve(keys.size());
-    for (const std::uint64_t key : keys) {
-        const auto dst = static_cast<NodeId>(key >> 32);
-        const auto src = static_cast<NodeId>(key & 0xFFFFFFFFu);
-        ++g.offsets_[std::size_t{dst} + 1];  // count arcs entering dst
-        ++g.out_deg_[src];
-        g.sources_.push_back(src);
-    }
-    std::partial_sum(g.offsets_.begin(), g.offsets_.end(), g.offsets_.begin());
-
-    g.dead_ends_ = static_cast<NodeId>(std::count(g.out_deg_.begin(), g.out_deg_.end(), 0u));
     return g;
 }
 
-}  // namespace pr
+} // namespace pr
