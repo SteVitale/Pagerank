@@ -1,1 +1,0 @@
-/usr/bin/c++ -g CMakeFiles/test_parser.dir/tests/test_parser.cpp.o -o test_parser  libpr_core.a lib/libgtest_main.a lib/libgtest.a 

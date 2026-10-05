@@ -1,2 +1,0 @@
-/usr/bin/ar qc libpr_core.a CMakeFiles/pr_core.dir/src/graph.cpp.o CMakeFiles/pr_core.dir/src/mtx_parser.cpp.o CMakeFiles/pr_core.dir/src/options.cpp.o CMakeFiles/pr_core.dir/src/pagerank.cpp.o CMakeFiles/pr_core.dir/src/report.cpp.o
-/usr/bin/ranlib libpr_core.a
